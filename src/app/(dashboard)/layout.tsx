@@ -23,7 +23,7 @@ export default function DashboardLayout({
     }, [isAuthenticated, router]);
 
     if (!isAuthenticated) {
-        return null; // Or a loading spinner
+        return null;
     }
 
     return (
@@ -31,10 +31,10 @@ export default function DashboardLayout({
             <Sidebar />
             <div className={cn(
                 "flex-1 flex flex-col transition-all duration-300",
-                sidebarOpen ? "ml-64" : "ml-20"
+                sidebarOpen ? "ml-56" : "ml-14"
             )}>
                 <Header />
-                <main className="p-8 flex-1">
+                <main className="p-3 sm:p-6 lg:p-8 flex-1">
                     {children}
                 </main>
             </div>

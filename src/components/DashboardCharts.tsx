@@ -32,27 +32,27 @@ const pieData = [
 
 export const CommissionChart = () => {
     return (
-        <div className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm col-span-2">
-            <div className="flex justify-between items-center mb-8">
+        <div className="bg-white p-3 rounded-xl border border-gray-100 shadow-sm col-span-1 lg:col-span-2">
+            <div className="flex justify-between items-center mb-4">
                 <div>
-                    <h3 className="text-xl font-bold text-[#1A3B3E]">Commission Earned vs Pending</h3>
-                    <div className="flex gap-4 mt-2">
-                        <div className="flex items-center gap-2">
-                            <div className="w-3 h-3 rounded-full bg-[#F2994A]" />
-                            <span className="text-xs text-gray-500 font-medium">Earned</span>
+                    <h3 className="text-base font-bold text-[#1A3B3E]">Commission Earned vs Pending</h3>
+                    <div className="flex gap-2 mt-1">
+                        <div className="flex items-center gap-1">
+                            <div className="w-2 h-2 rounded-full bg-[#F2994A]" />
+                            <span className="text-[9px] text-gray-500 font-medium">Earned</span>
                         </div>
-                        <div className="flex items-center gap-2">
-                            <div className="w-3 h-3 rounded-full bg-[#EB5757]" />
-                            <span className="text-xs text-gray-500 font-medium">Pending</span>
+                        <div className="flex items-center gap-1">
+                            <div className="w-2 h-2 rounded-full bg-[#EB5757]" />
+                            <span className="text-[9px] text-gray-500 font-medium">Pending</span>
                         </div>
                     </div>
                 </div>
-                <div className="bg-[#1A3B3E] text-white px-4 py-2 rounded-xl text-center">
-                    <p className="text-sm font-bold">$ 1,500 <span className="text-[10px] text-[#00A8BC]">+25%</span></p>
-                    <p className="text-[10px] opacity-70">profit/day</p>
+                <div className="bg-[#1A3B3E] text-white px-2 py-1 rounded-md text-center">
+                    <p className="text-[10px] font-bold">$ 1,500 <span className="text-[8px] text-[#00A8BC]">+25%</span></p>
+                    <p className="text-[8px] opacity-70">profit/day</p>
                 </div>
             </div>
-            <div className="h-[300px] w-full">
+            <div className="h-[200px] w-full">
                 <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={lineData}>
                         <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#F0F0F0" />
@@ -76,17 +76,17 @@ export const CommissionChart = () => {
                             type="monotone"
                             dataKey="earned"
                             stroke="#F2994A"
-                            strokeWidth={3}
-                            dot={{ r: 4, fill: '#F2994A', strokeWidth: 2, stroke: '#fff' }}
-                            activeDot={{ r: 6 }}
+                            strokeWidth={2}
+                            dot={{ r: 3, fill: '#F2994A', strokeWidth: 1.5, stroke: '#fff' }}
+                            activeDot={{ r: 4 }}
                         />
                         <Line
                             type="monotone"
                             dataKey="pending"
                             stroke="#EB5757"
-                            strokeWidth={3}
-                            dot={{ r: 4, fill: '#EB5757', strokeWidth: 2, stroke: '#fff' }}
-                            activeDot={{ r: 6 }}
+                            strokeWidth={2}
+                            dot={{ r: 3, fill: '#EB5757', strokeWidth: 1.5, stroke: '#fff' }}
+                            activeDot={{ r: 4 }}
                         />
                     </LineChart>
                 </ResponsiveContainer>
@@ -97,25 +97,25 @@ export const CommissionChart = () => {
 
 export const StatusPieChart = () => {
     return (
-        <div className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm relative">
-            <div className="flex justify-between items-center mb-6">
+        <div className="bg-white p-3 rounded-xl border border-gray-100 shadow-sm relative">
+            <div className="flex justify-between items-center mb-3">
                 <div>
-                    <h3 className="text-xl font-bold text-[#1A3B3E]">Indent Status Breakdown</h3>
-                    <p className="text-sm text-gray-400">September 2025</p>
+                    <h3 className="text-base font-bold text-[#1A3B3E]">Indent Status</h3>
+                    <p className="text-[10px] text-gray-400">September 2025</p>
                 </div>
-                <button className="text-[#00A8BC] w-8 h-8 flex items-center justify-center bg-[#E6F7F9] rounded-lg">
-                    <Info size={16} />
+                <button className="text-[#00A8BC] w-6 h-6 flex items-center justify-center bg-[#E6F7F9] rounded-md">
+                    <Info size={12} />
                 </button>
             </div>
-            <div className="h-[250px] w-full relative">
+            <div className="h-[150px] w-full relative">
                 <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
                         <Pie
                             data={pieData}
                             cx="50%"
                             cy="50%"
-                            innerRadius={60}
-                            outerRadius={90}
+                            innerRadius={45}
+                            outerRadius={70}
                             paddingAngle={2}
                             dataKey="value"
                         >
@@ -127,15 +127,15 @@ export const StatusPieChart = () => {
                     </PieChart>
                 </ResponsiveContainer>
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none">
-                    <p className="text-2xl font-black text-[#1A3B3E]">40%</p>
-                    <p className="text-[10px] text-gray-400 font-bold">(10)</p>
+                    <p className="text-lg font-black text-[#1A3B3E]">40%</p>
+                    <p className="text-[8px] text-gray-400 font-bold">(10)</p>
                 </div>
             </div>
-            <div className="grid grid-cols-2 gap-y-3 mt-4">
+            <div className="grid grid-cols-2 gap-y-2 mt-3">
                 {pieData.map((item) => (
-                    <div key={item.name} className="flex items-center gap-2">
-                        <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: item.color }} />
-                        <span className="text-[10px] text-gray-500 font-medium">{item.name}</span>
+                    <div key={item.name} className="flex items-center gap-1.5">
+                        <div className="w-2 h-2 rounded-full" style={{ backgroundColor: item.color }} />
+                        <span className="text-[9px] text-gray-500 font-medium">{item.name}</span>
                     </div>
                 ))}
             </div>

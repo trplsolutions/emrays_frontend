@@ -23,11 +23,11 @@ const LoginPage = () => {
             <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="w-full max-w-md bg-white rounded-[40px] shadow-2xl p-12"
+                className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8"
             >
-                <div className="text-center mb-10">
-                    <h1 className="text-[#00A8BC] text-4xl font-extrabold mb-3">EMRAYS</h1>
-                    <p className="text-gray-500 font-medium italic">Welcome Back to Vector Hub</p>
+                <div className="text-center mb-8">
+                    <h1 className="text-[#00A8BC] text-3xl font-extrabold mb-2">EMRAYS</h1>
+                    <p className="text-gray-500 font-medium italic text-sm">Welcome Back to Vector Hub</p>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-6">

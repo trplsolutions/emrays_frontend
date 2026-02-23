@@ -8,18 +8,18 @@ import { motion } from 'framer-motion';
 
 const DashboardPage = () => {
     return (
-        <div className="space-y-8 max-w-[1600px] mx-auto">
-            <div className="flex justify-between items-center">
+        <div className="space-y-4 max-w-[1600px] mx-auto">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
                 <div>
-                    <h1 className="text-3xl font-bold text-[#1A3B3E]">Vector Hub <span className="text-gray-400 font-normal">Dashboard</span></h1>
+                    <h1 className="text-xl font-bold text-[#1A3B3E]">Vector Hub <span className="text-gray-400 font-normal text-sm">Dashboard</span></h1>
                 </div>
-                <div className="flex items-center gap-2 bg-white border border-gray-100 px-4 py-2 rounded-xl text-gray-500 text-sm font-medium shadow-sm cursor-pointer hover:bg-gray-50 transition-colors">
-                    <Calendar size={18} />
+                <div className="flex items-center gap-1.5 bg-white border border-gray-100 px-2 py-1 rounded-md text-gray-500 text-[10px] font-medium shadow-sm cursor-pointer hover:bg-gray-50 transition-colors">
+                    <Calendar size={14} />
                     Dec 23, 2024 - Dec 30, 2023
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                 <StatCard
                     title="Open Inquiries"
                     value="12"
@@ -58,40 +58,40 @@ const DashboardPage = () => {
                 />
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
                 <CommissionChart />
                 <StatusPieChart />
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div className="bg-white p-8 rounded-[32px] border border-gray-100 shadow-sm">
-                    <h3 className="text-xl font-bold text-[#1A3B3E] mb-6">My Task</h3>
-                    <ul className="space-y-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <div className="bg-white p-3 rounded-xl border border-gray-100 shadow-sm">
+                    <h3 className="text-base font-bold text-[#1A3B3E] mb-3">My Task</h3>
+                    <ul className="space-y-1.5">
                         {[
                             "Approval Pending: Quote #Q-1023",
                             "Missing Doc: BL for #IND-550",
                             "Follow-up Due: #INQ-889"
                         ].map((task, i) => (
-                            <li key={i} className="flex items-center gap-3 text-[#5F7E82] font-medium bg-gray-50/50 p-3 rounded-xl hover:bg-gray-50 transition-colors cursor-pointer">
-                                <input type="checkbox" className="w-5 h-5 rounded-md border-gray-300 accent-[#00A8BC]" />
+                            <li key={i} className="flex items-center gap-2 text-[#5F7E82] text-xs font-medium bg-gray-50/50 p-2 rounded-md hover:bg-gray-50 transition-colors cursor-pointer">
+                                <input type="checkbox" className="w-3.5 h-3.5 rounded border-gray-300 accent-[#00A8BC]" />
                                 {task}
                             </li>
                         ))}
                     </ul>
                 </div>
 
-                <div className="bg-white p-8 rounded-[32px] border border-gray-100 shadow-sm">
-                    <h3 className="text-xl font-bold text-[#1A3B3E] mb-6">Recent Activity Feed</h3>
-                    <ul className="space-y-4">
+                <div className="bg-white p-3 rounded-xl border border-gray-100 shadow-sm">
+                    <h3 className="text-base font-bold text-[#1A3B3E] mb-3">Recent Activity Feed</h3>
+                    <ul className="space-y-1.5">
                         {[
                             { msg: "Sales created #INQ-105", time: "10m" },
                             { msg: "Mgr Approved #PO-992", time: "1h" },
                             { msg: "Supplier uploaded Invoice #IND-20", time: "2h" }
                         ].map((activity, i) => (
-                            <li key={i} className="flex items-center gap-3 text-[#5F7E82] font-medium bg-gray-50/50 p-3 rounded-xl">
-                                <input type="checkbox" className="w-5 h-5 rounded-md border-gray-300 accent-[#00A8BC]" />
+                            <li key={i} className="flex items-center gap-2 text-[#5F7E82] text-xs font-medium bg-gray-50/50 p-2 rounded-md">
+                                <input type="checkbox" className="w-3.5 h-3.5 rounded border-gray-300 accent-[#00A8BC]" />
                                 <span className="flex-1">{activity.msg}</span>
-                                <span className="text-xs text-gray-400 font-bold"> - {activity.time}</span>
+                                <span className="text-[9px] text-gray-400 font-bold"> - {activity.time}</span>
                             </li>
                         ))}
                     </ul>

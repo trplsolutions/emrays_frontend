@@ -47,21 +47,21 @@ const Sidebar = () => {
     return (
         <div className={cn(
             "fixed left-0 top-0 h-full bg-[#E6F7F9] border-r border-[#D1EEF2] transition-all duration-300 z-50 flex flex-col",
-            sidebarOpen ? "w-64" : "w-20"
+            sidebarOpen ? "w-56" : "w-14"
         )}>
-            <div className="p-6 flex items-center justify-between">
-                <div className={cn("text-[#00A8BC] font-bold text-2xl tracking-tight overflow-hidden whitespace-nowrap", !sidebarOpen && "hidden")}>
+            <div className="p-3 flex items-center justify-between">
+                <div className={cn("text-[#00A8BC] font-bold text-lg tracking-tight overflow-hidden whitespace-nowrap", !sidebarOpen && "hidden")}>
                     EMRAYS
                 </div>
                 <button
                     onClick={toggleSidebar}
                     className="p-1 hover:bg-[#D1EEF2] rounded-md transition-colors"
                 >
-                    {sidebarOpen ? <ChevronLeft size={20} className="text-[#00A8BC]" /> : <ChevronRight size={20} className="text-[#00A8BC]" />}
+                    {sidebarOpen ? <ChevronLeft size={16} className="text-[#00A8BC]" /> : <ChevronRight size={16} className="text-[#00A8BC]" />}
                 </button>
             </div>
 
-            <nav className="flex-1 px-4 py-4 space-y-1 overflow-y-auto custom-scrollbar">
+            <nav className="flex-1 px-2.5 py-4 space-y-0.5 overflow-y-auto custom-scrollbar">
                 {navItems.map((item) => {
                     const isActive = pathname === item.href;
                     return (
@@ -69,31 +69,31 @@ const Sidebar = () => {
                             key={item.href}
                             href={item.href}
                             className={cn(
-                                "flex items-center gap-3 px-3 py-3 rounded-xl transition-all duration-200 group",
+                                "flex items-center gap-2 px-2 py-2 rounded-lg transition-all duration-200 group",
                                 isActive
-                                    ? "bg-[#00A8BC] text-white shadow-lg shadow-[#00A8BC]/20"
+                                    ? "bg-[#00A8BC] text-white shadow-md shadow-[#00A8BC]/10"
                                     : "text-[#5F7E82] hover:bg-[#D1EEF2]"
                             )}
                         >
-                            <item.icon size={20} className={cn(isActive ? "text-white" : "text-[#5F7E82] group-hover:text-[#00A8BC]")} />
-                            {sidebarOpen && <span className="font-medium truncate">{item.label}</span>}
+                            <item.icon size={16} className={cn(isActive ? "text-white" : "text-[#5F7E82] group-hover:text-[#00A8BC]")} />
+                            {sidebarOpen && <span className="text-[11px] font-medium truncate">{item.label}</span>}
                         </Link>
                     );
                 })}
             </nav>
 
-            <div className="p-4 border-t border-[#D1EEF2]">
+            <div className="p-2.5 border-t border-[#D1EEF2]">
                 <button
                     onClick={() => {
                         logout();
                         window.location.href = '/login';
                     }}
                     className={cn(
-                        "flex items-center gap-3 px-3 py-3 w-full rounded-xl text-[#F25C54] hover:bg-[#FEEAEA] transition-all duration-200 group",
+                        "flex items-center gap-2 px-2 py-2 w-full rounded-lg text-[#F25C54] hover:bg-[#FEEAEA] transition-all duration-200 group",
                     )}
                 >
-                    <LogOut size={20} className="group-hover:scale-110 transition-transform" />
-                    {sidebarOpen && <span className="font-semibold">Logout</span>}
+                    <LogOut size={16} className="group-hover:scale-110 transition-transform" />
+                    {sidebarOpen && <span className="text-[11px] font-bold">Logout</span>}
                 </button>
             </div>
         </div>
