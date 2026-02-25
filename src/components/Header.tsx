@@ -6,7 +6,9 @@ import {
     MessageSquare, Clock, CheckCircle, Info
 } from 'lucide-react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { useAuthStore } from '@/store/useStore';
+import { apiFetch } from '@/lib/api';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
@@ -42,10 +44,17 @@ const notifications = [
 
 const Header = () => {
     const { user, logout } = useAuthStore();
+    const router = useRouter();
     const [showNotifications, setShowNotifications] = useState(false);
     const [showProfileMenu, setShowProfileMenu] = useState(false);
     const notificationRef = useRef<HTMLDivElement>(null);
     const profileRef = useRef<HTMLDivElement>(null);
+
+    const handleLogout = async () => {
+        await apiFetch('/api/auth/logout/', { method: 'POST' });
+        logout();
+        router.push('/login');
+    };
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -187,10 +196,7 @@ const Header = () => {
                                 </div>
                                 <div className="p-1 border-t border-gray-50">
                                     <button
-                                        onClick={() => {
-                                            logout();
-                                            window.location.href = '/login';
-                                        }}
+                                        onClick={handleLogout}
                                         className="w-full flex items-center gap-2 px-3 py-2 text-[11px] font-bold text-red-500 hover:bg-red-50 rounded-lg transition-colors"
                                     >
                                         <LogOut size={14} />

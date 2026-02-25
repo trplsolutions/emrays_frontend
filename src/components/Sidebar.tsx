@@ -2,7 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { apiFetch } from '@/lib/api';
 import {
     LayoutDashboard,
     Users,
@@ -41,8 +42,15 @@ const navItems = [
 
 const Sidebar = () => {
     const pathname = usePathname();
+    const router = useRouter();
     const { sidebarOpen, toggleSidebar } = useUIStore();
     const { logout } = useAuthStore();
+
+    const handleLogout = async () => {
+        await apiFetch('/api/auth/logout/', { method: 'POST' });
+        logout();
+        router.push('/login');
+    };
 
     return (
         <div className={cn(
@@ -84,10 +92,7 @@ const Sidebar = () => {
 
             <div className="p-2.5 border-t border-[#D1EEF2]">
                 <button
-                    onClick={() => {
-                        logout();
-                        window.location.href = '/login';
-                    }}
+                    onClick={handleLogout}
                     className={cn(
                         "flex items-center gap-2 px-2 py-2 w-full rounded-lg text-[#F25C54] hover:bg-[#FEEAEA] transition-all duration-200 group",
                     )}
